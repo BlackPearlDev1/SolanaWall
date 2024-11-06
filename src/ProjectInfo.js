@@ -21,7 +21,7 @@ const ProjectInfo = () => {
                 Project:
                 <a href="https://whitepaper.solwall.live/sol-wall-project/user-guide" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>User guide</a>
                 <a href="https://whitepaper.solwall.live" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>White paper</a>
-                <a href="https://github.com/benui96-dev/SolanaWall" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>Github</a>
+                <a href="https://github.com/BlackPearlDev1/SolanaWall" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>Github</a>
                 <a href="mailto:team@solwall.live" style={{ color: '#9945FF' }}>Contact</a>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
