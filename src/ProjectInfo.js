@@ -21,6 +21,7 @@ const ProjectInfo = () => {
                 Project:
                 <a href="https://whitepaper.solwall.live/sol-wall-project/user-guide" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>User guide</a>
                 <a href="https://whitepaper.solwall.live" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>White paper</a>
+                <a href="https://github.com/benui96-dev/SolanaWall" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>Github</a>
                 <a href="mailto:team@solwall.live" style={{ color: '#9945FF' }}>Contact</a>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
@@ -32,11 +33,11 @@ const ProjectInfo = () => {
                 Buy on:
                 <a href="https://jup.ag/swap/SOL-B47jrQkyMsG7wEnri3iud4i5MQAaWQkgqTevrCU9Lj6R" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>Jupiter</a>
                 <a href="https://raydium.io/swap/?from=11111111111111111111111111111111&to=B47jrQkyMsG7wEnri3iud4i5MQAaWQkgqTevrCU9Lj6R" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>Raydium</a>
-                <a href="https://www.orca.so/?outputCurrency=B47jrQkyMsG7wEnri3iud4i5MQAaWQkgqTevrCU9Lj6R" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>Orca</a>
+                <a href="https://www.orca.so/?outputCurrency=B47jrQkyMsG7wEnri3iud4i5MQAaWQkgqTevrCU9Lj6R&tokenIn=So11111111111111111111111111111111111111112&tokenOut=B47jrQkyMsG7wEnri3iud4i5MQAaWQkgqTevrCU9Lj6R" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>Orca</a>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
                 Charts:
-                <a href="https://www.dextools.io/app/en/solana/pair-explorer/B47jrQkyMsG7wEnri3iud4i5MQAaWQkgqTevrCU9Lj6R" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>Dextools</a>
+                {/* <a href="https://www.dextools.io/app/en/solana/pair-explorer/B47jrQkyMsG7wEnri3iud4i5MQAaWQkgqTevrCU9Lj6R" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>Dextools</a> */}
                 <a href="https://dexscreener.com/solana/B47jrQkyMsG7wEnri3iud4i5MQAaWQkgqTevrCU9Lj6R" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>Dexscreener</a>
                 <a href="https://birdeye.so/token/B47jrQkyMsG7wEnri3iud4i5MQAaWQkgqTevrCU9Lj6R" target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>Birdeye</a>
             </div>
