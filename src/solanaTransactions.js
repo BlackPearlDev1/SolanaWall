@@ -1,4 +1,4 @@
-import { clusterApiUrl, Connection, PublicKey, Transaction, SystemProgram } from '@solana/web3.js';
+import { Connection, PublicKey, Transaction, SystemProgram } from '@solana/web3.js';
 import { createBurnInstruction, getAssociatedTokenAddress, TOKEN_PROGRAM_ID } from '@solana/spl-token';
 import { MEMO_PROGRAM_ID } from '@solana/spl-memo';
 
@@ -18,37 +18,39 @@ const sanitizeText = (text) => {
   return tempDiv.textContent || tempDiv.innerText || '';
 };
 
-export const sendTransactionWithMemo = async (wallet, memoText) => {
+export const sendTransactionWithMemo = async (wallet, memoText, balance) => {
   const { publicKey, sendTransaction } = wallet;
   if (!publicKey) throw new Error('Wallet not connected');
 
-  const tokenAccountPubkey = await getAssociatedTokenAddress(TOKEN_MINT_ADDRESS, publicKey);
-  const accountInfo = await connection.getAccountInfo(tokenAccountPubkey);
-  if (!accountInfo) {
-    throw new Error('No associated token account found for this wallet');
-  }
-
   const transaction = new Transaction();
+  alert(balance);
+  if(balance >= 1){
+      const tokenAccountPubkey = await getAssociatedTokenAddress(TOKEN_MINT_ADDRESS, publicKey);
+      const accountInfo = await connection.getAccountInfo(tokenAccountPubkey);
+      if (!accountInfo) {
+        throw new Error('No associated token account found for this wallet');
+      }
 
-  const burnAmount = Math.pow(10, TOKEN_DECIMALS);
-  transaction.add(
-    createBurnInstruction(
-      tokenAccountPubkey,
-      TOKEN_MINT_ADDRESS,
-      publicKey,
-      burnAmount,
-      [],
-      TOKEN_PROGRAM_ID
-    )
-  );
-
-  transaction.add(
-    SystemProgram.transfer({
-      fromPubkey: publicKey,
-      toPubkey: FEE_ADDRESS,
-      lamports: 50000, //(0.00005 SOL)
-    })
-  );
+      const burnAmount = Math.pow(10, TOKEN_DECIMALS);
+      transaction.add(
+        createBurnInstruction(
+          tokenAccountPubkey,
+          TOKEN_MINT_ADDRESS,
+          publicKey,
+          burnAmount,
+          [],
+          TOKEN_PROGRAM_ID
+        )
+      );
+    }else{
+      transaction.add(
+        SystemProgram.transfer({
+          fromPubkey: publicKey,
+          toPubkey: FEE_ADDRESS,
+          lamports: 50000, //(0.00005 SOL)
+        })
+      );
+}
 
   const cleanMemoText = sanitizeText(memoText);
 

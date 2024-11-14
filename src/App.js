@@ -53,22 +53,15 @@ const App = () => {
 
     try {
       const balance = await getTokenBalance(publicKey);
-      const burnAmount = 1;
-      const isSufficient = balance >= burnAmount;
-
-      if (!isSufficient) {
-        console.error('Insufficient balance to send message.');
-        return;
-      }
-
       const sanitizedData = editorData;
-      const signature = await sendTransactionWithMemo({ publicKey, sendTransaction }, sanitizedData);
+      const signature = await sendTransactionWithMemo({ publicKey, sendTransaction }, sanitizedData, balance);
       const solscanLink = `https://solscan.io/tx/${signature}`;
 
       const newMessage = {
         message: sanitizedData,
         signature: signature,
         solscanLink: solscanLink,
+        balance: balance,
       };
 
       const response = await fetch(process.env.REACT_APP_GET_MESSAGES, {
