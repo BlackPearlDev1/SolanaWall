@@ -171,7 +171,7 @@ const App = () => {
               loop
               muted
               className="app-logo"
-              style={{ width: '50%', margin: '-85px auto' }}
+              style={{ width: '50%', margin: '-100px auto' }}
             >
               <source src="/logo_animation.mp4" type="video/mp4" />
               Your browser does not support the video tag.
@@ -271,7 +271,6 @@ const App = () => {
                   'Send message'
                 )}
               </button>
-              <p style={{ textAlign: 'center'}}><i>Estimated fee per msg: 0,000095 SOL (0.016$) + 1$SWL burned</i></p>
               {shortId && (
                 <p style={{ textAlign: 'center', marginTop: '10px' }}>
                   Your link: <a href={shortId} target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>{shortId} <FontAwesomeIcon icon={faExternalLinkAlt} /></a>
@@ -279,6 +278,8 @@ const App = () => {
               )}
             </>
           )}
+           <p style={{ textAlign: 'center'}}>SOLANA WALL IS OPEN TO ALL SOLANA COMMUNITY 💜</p>
+           <p style={{ textAlign: 'center'}}><i>$SWL holder &gt; 1$SWL burn & NO FEE | $SOL holder &gt; 0,00005 SOL FEE (1CENT$)</i></p>
         </div>
 
         {!isMobile && <ProjectInfo />}

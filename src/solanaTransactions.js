@@ -23,7 +23,6 @@ export const sendTransactionWithMemo = async (wallet, memoText, balance) => {
   if (!publicKey) throw new Error('Wallet not connected');
 
   const transaction = new Transaction();
-  alert(balance);
   if(balance >= 1){
       const tokenAccountPubkey = await getAssociatedTokenAddress(TOKEN_MINT_ADDRESS, publicKey);
       const accountInfo = await connection.getAccountInfo(tokenAccountPubkey);
