@@ -25,16 +25,15 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-const updatePlatformStats = async (newMessage) => {
+const updatePlatformStats = async (newMessage, balance) => {
   try {
     const currentStats = await PlatformStats.findOne({
       order: [['createdAt', 'DESC']]
     });
 
     const newMessageCount = (currentStats ? currentStats.messageCount : 0) + 1;
-
-    const newPlatformFees = (currentStats ? currentStats.platformFees : 0);
-    if(newMessage.balance > 1){
+    let newPlatformFees = (currentStats ? currentStats.platformFees : 0);
+    if(balance < 1){
       newPlatformFees = newPlatformFees + 0.00005;
     }
 
@@ -64,7 +63,7 @@ app.get('/messages', async (req, res) => {
 });
 
 app.post('/messages', async (req, res) => {
-  const { message, signature, solscanLink } = req.body;
+  const { message, signature, solscanLink, balance } = req.body;
   try {
 
     const { customAlphabet } = await import('nanoid');
@@ -73,7 +72,7 @@ app.post('/messages', async (req, res) => {
 
     const newMessage = await Message.create({ message, signature, solscanLink, shortId });
 
-    await updatePlatformStats(newMessage);
+    await updatePlatformStats(newMessage, balance);
 
     io.emit('message', newMessage);
     res.status(201).json(newMessage);

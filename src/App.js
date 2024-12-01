@@ -177,7 +177,7 @@ const App = () => {
               Your browser does not support the video tag.
             </video>
           )}
-          <p style={{ color: '#14F195', fontSize: '1.2em', marginTop: '10px' }}>
+          <p style={{ color: '#14F195', fontSize: '1.2em', marginTop: '0px' }}>
             Write your message for eternity on chain 💫<br />
             Powered by Solana 🔗 & Phantom 👻
           </p>
