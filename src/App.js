@@ -45,6 +45,12 @@ const App = () => {
     setIsMobile(isMobileDevice);
   };
 
+  const walletButtonStyle = {
+    width: '100%',
+    marginBottom: '10px',
+    marginTop: connected ? (isMobile ? '0px' : '10px') : (isMobile ? '20px' : '10px'),
+  };
+
   const handleSendTransaction = async () => {
     if (!connected || !editorData) return;
 
@@ -156,40 +162,26 @@ const App = () => {
 
   return (
     <div className='app-container' style={{ display: 'flex', height: '100vh', backgroundColor: 'black', color: '#14F195' }}>
-      <div className='left-column'>
+      <div className='left-column' style={{backgroundImage: "url('/space.jpg')",  backgroundSize: 'cover', backgroundPosition: 'center 50px', backgroundRepeat: 'no-repeat'}}>
         <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-          {isMobile ? (
             <img
               src="/logo.jpg"
               alt="Logo"
               className="app-logo"
-              style={{ width: '50%', margin: '20px auto' }}
+              style={{ width: '40%', margin: '20px auto' }}
             />
-          ) : (
-            <video
-              autoPlay
-              loop
-              muted
-              className="app-logo"
-              style={{ width: '50%', margin: '-100px auto' }}
-            >
-              <source src="/logo_animation.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )}
-          <p style={{ color: '#14F195', fontSize: '1.2em', marginTop: '0px' }}>
+          <p style={{ color: '#14F195', fontSize: '1.2em', marginTop: '-15px' }}>
             Write your message for eternity on chain 💫<br />
             Powered by Solana 🔗 & Phantom 👻
           </p>
           <WalletModalProvider>
-            <WalletMultiButton style={{ width: '100%', marginBottom: '10px' }} />
+            <WalletMultiButton style={walletButtonStyle} />
           </WalletModalProvider>
         </div>
 
         <div className='editor-container'>
           {connected && (
             <>
-              <p style={{ textAlign: 'center', marginBottom: '10px' }}>Wallet ID: {publicKey.toBase58()}</p>
               <div style={{ marginBottom: '10px' }}>
                 <Editor
                   init={{
@@ -250,7 +242,7 @@ const App = () => {
                     backgroundColor: '#333',
                   }}
                 />
-                <p style={{ textAlign: 'center' }}>Remaining characters: {75 - visibleTextLength}</p>
+                <p style={{ textAlign: 'center', color: 'white', fontWeight: 'bold', backgroundColor: 'black'}}>Remaining characters: {75 - visibleTextLength}</p>
               </div>
               <button
                 onClick={handleSendTransaction}
@@ -272,17 +264,15 @@ const App = () => {
                 )}
               </button>
               {shortId && (
-                <p style={{ textAlign: 'center', marginTop: '10px' }}>
-                  Your link: <a href={shortId} target="_blank" rel="noopener noreferrer" style={{ color: '#9945FF' }}>{shortId} <FontAwesomeIcon icon={faExternalLinkAlt} /></a>
+                <p style={{ textAlign: 'center', marginTop: '10px', color: 'white', fontWeight: 'bold', backgroundColor: 'black' }}>
+                  Your link: <a href={shortId} target="_blank" rel="noopener noreferrer" style={{ color: 'white', fontWeight: 'bold', backgroundColor: 'black' }}>{shortId} <FontAwesomeIcon icon={faExternalLinkAlt} /></a>
                 </p>
               )}
             </>
           )}
-           <p style={{ textAlign: 'center'}}>SOLANA WALL IS OPEN TO ALL SOLANA COMMUNITY 💜</p>
-           <p style={{ textAlign: 'center'}}><i>$SWL holder &gt; 1$SWL burn & NO FEE | $SOL holder &gt; 0,00005 SOL FEE (1CENT$)</i></p>
         </div>
 
-        {!isMobile && <ProjectInfo />}
+        {!isMobile && <ProjectInfo connected={connected} />}
 
       </div>
 
@@ -312,7 +302,7 @@ const App = () => {
         </div>
       </div>
 
-      {isMobile && <ProjectInfo />}
+      {isMobile && <ProjectInfo connected={connected} />}
 
     </div>
   );
