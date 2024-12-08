@@ -171,8 +171,7 @@ const App = () => {
               style={{ width: '40%', margin: '20px auto' }}
             />
           <p style={{ color: '#14F195', fontSize: '1.2em', marginTop: '-15px' }}>
-            Write your message for eternity on chain 💫<br />
-            Powered by Solana 🔗 & Phantom 👻
+            Write your message for eternity on chain 💫
           </p>
           <WalletModalProvider>
             <WalletMultiButton style={walletButtonStyle} />
