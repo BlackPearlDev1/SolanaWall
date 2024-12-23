@@ -149,17 +149,6 @@ const App = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://files.coinmarketcap.com/static/widget/currency.js';
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <div className='app-container' style={{ display: 'flex', height: '100vh', backgroundColor: 'black', color: '#14F195' }}>
       <div className='left-column' style={{backgroundImage: "url('/space.jpg')",  backgroundSize: 'cover', backgroundPosition: 'center 50px', backgroundRepeat: 'no-repeat'}}>

@@ -111,10 +111,6 @@ body {
   /* Orientation verticale */
 }
 
-.coinmarketcap-currency-widget {
-  margin: 10px;
-}
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
