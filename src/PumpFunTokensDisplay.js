@@ -35,8 +35,8 @@ const PumpFunTokensDisplay = ({ connected }) => {
 
   const containerStyle = {
     marginTop: connected
-      ? (isMobile ? '20px' : '160px')
-      : (isMobile ? '20px' : '415px'),
+      ? (isMobile ? '20px' : '150px')
+      : (isMobile ? '20px' : '405px'),
     textAlign: 'center',
     padding: '2px',
     backgroundColor: '#1c1c1e',

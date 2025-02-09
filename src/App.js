@@ -83,7 +83,7 @@ const App = () => {
   const walletButtonStyle = {
     width: '100%',
     marginBottom: '10px',
-    marginTop: connected ? (isMobile ? '0px' : '10px') : (isMobile ? '20px' : '10px'),
+    marginTop: connected ? (isMobile ? '0px' : '0px') : (isMobile ? '20px' : '0px'),
   };
 
   const handleSendTransaction = async () => {
