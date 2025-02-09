@@ -4,6 +4,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import io from 'socket.io-client';
 import { sendTransactionWithMemo, getTokenBalance } from './solanaTransactions';
 import ProjectInfo from './ProjectInfo';
+import PumpFunTokensDisplay from './PumpFunTokensDisplay';
 import DOMPurify from 'dompurify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
@@ -39,6 +40,40 @@ const App = () => {
   const messagesEndRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
+
+  const popupStyle = {
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#333',
+    color: '#fff',
+    padding: '20px',
+    borderRadius: '8px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+    zIndex: 1000,
+    width: isMobile ? '90%' : '300px',
+    textAlign: 'center',
+    border: '2px solid #9945FF',
+  };
+
+  const overlayStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    zIndex: 999,
+  };
+
+  const iconStyle = {
+    cursor: 'pointer',
+    marginLeft: '5px',
+    color: '#9945FF',
+    fontSize: '14px',
+  };
 
   const checkIfMobile = () => {
     const isMobileDevice = window.matchMedia("(max-width: 768px)").matches;
@@ -161,6 +196,11 @@ const App = () => {
             />
           <p style={{ color: '#14F195', fontSize: '1.2em', marginTop: '-15px' }}>
             Write your message for eternity on chain 💫
+            <i
+              className="fas fa-info-circle"
+              style={iconStyle}
+              onClick={() => setShowInfo(true)}
+            />
           </p>
           <WalletModalProvider>
             <WalletMultiButton style={walletButtonStyle} />
@@ -259,7 +299,8 @@ const App = () => {
             </>
           )}
         </div>
-
+        
+        {!isMobile && <PumpFunTokensDisplay connected={connected} />}
         {!isMobile && <ProjectInfo connected={connected} />}
 
       </div>
@@ -290,8 +331,25 @@ const App = () => {
         </div>
       </div>
 
+      {isMobile && <PumpFunTokensDisplay connected={connected} />}
       {isMobile && <ProjectInfo connected={connected} />}
 
+      {showInfo && (
+        <>
+          <div style={overlayStyle} onClick={() => setShowInfo(false)} />
+          <div style={popupStyle}>
+            <p>
+              $SWL IS OPEN TO ALL SOLANA COMMUNITY $SWL or $SOL holder 💜<br/>
+              Cost of a message:<br/>
+              - $SWL holder: One $SWL burned.<br/>
+              - $SOL holder: 0,000045 SOL fee (+- 1 CENT DOLLAR).
+            </p>
+            <button onClick={() => setShowInfo(false)} style={{ marginTop: '10px', padding: '5px 10px', backgroundColor: '#9945FF', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+              Fermer
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };

@@ -6,6 +6,7 @@ const cors = require('cors');
 const sequelize = require('./src/sequelize');
 const Message = require('./src/models/Message');
 const PlatformStats = require('./src/models/PlatformStats');
+const PumpFunToken = require('./src/models/PumpfunToken');
 
 const app = express();
 const server = http.createServer(app);
@@ -84,6 +85,18 @@ app.post('/messages', async (req, res) => {
     io.emit('allMessages', messages);
   } catch (error) {
     res.status(500).json({ error: 'Error adding message' });
+  }
+});
+
+app.get('/pumpfuntokens', async (req, res) => {
+  try {
+    const tokens = await PumpFunToken.findAll({
+      order: [['id', 'DESC']],
+      limit: 3
+    });
+    res.json(tokens);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching pumpfuntokens' });
   }
 });
 

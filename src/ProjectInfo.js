@@ -14,8 +14,8 @@ const ProjectInfo = ({ connected }) => {
 
   const containerStyle = {
     marginTop: connected 
-      ? (isMobile ? '20px' : '180px')
-      : (isMobile ? '10px' : '435px'),
+      ? (isMobile ? '20px' : '0px')
+      : (isMobile ? '10px' : '0px'),
     textAlign: 'center',
     padding: '0px',
     backgroundColor: '#1c1c1e',
