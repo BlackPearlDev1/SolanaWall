@@ -184,6 +184,14 @@ const ProjectInfo = ({ connected }) => {
       <div style={sectionStyle}>
         <span>BUY ON</span>
         <a
+          href="https://app.meteora.ag/pools/7TZZE587SUQrytqXy229FnJQnAHmLvQXVQNQkoXxmAkr"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={linkStyle}
+        >
+          Meteora
+        </a>
+        <a
           href="https://jup.ag/swap/SOL-B47jrQkyMsG7wEnri3iud4i5MQAaWQkgqTevrCU9Lj6R"
           target="_blank"
           rel="noopener noreferrer"
